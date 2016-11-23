@@ -195,6 +195,9 @@ def saltar3():
             posym=210
             counterym=0
 def saltar11():
+    """
+funcion que permite saltar al personaje luigi sin realizar ningun cambio en su posicion en x, determinando hacia que direccion esta orientado el personaje para realizarlo, tambien determinado por el limite de salto y un contador
+    """
     global canvas,leluigi,posxl,posyl,limite1,counteryl,estadoizdel
     if estadoizdel==1:
         if (limite1!=True) and(counteryl<=150):
@@ -662,7 +665,7 @@ def mover():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe,enemy,posye,posym,posxm,estadoe,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe,enemy,posye,posym,posxm,estadoe,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas,parejas
     canvas.delete(enemy)
     posxe=posxe-1
     if (((posxm<=(posxe+30))and(posxm>=(posxe-30)))and((posym==(posye+50))or(posym==(posye-45)))):
@@ -685,6 +688,9 @@ a mario y morir a manos de este
         if (((posye<=440) and (posye>=240))or((posye>=460) and (posye<=530))or((posye<=230) and (posye>=80))) and (posxe<0):
             posxe=800
             if(posye>=460) and (posye<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye=210
             elif(posye<=230) and (posye>=80):
                 posye=520
@@ -705,7 +711,7 @@ def mover1():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe1,enemy11,posye1,posym,posxm,estadoe1,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe1,enemy11,posye1,posym,posxm,estadoe1,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy11)
     posxe1=posxe1-1
     if ((posxm<=(posxe1+30))and(posxm>=(posxe1-30)))and((posym==(posye1+50))or(posym==(posye1-45))):
@@ -728,6 +734,9 @@ a mario y morir a manos de este
         if (((posye1<=440) and (posye1>=240))or((posye1>=460) and (posye1<=530))or((posye1<=230) and (posye1>=80))) and (posxe1<0):
             posxe1=800
             if(posye1>=460) and (posye1<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye1=210
             elif(posye1<=230) and (posye1>=80):
                 posye1=520
@@ -748,7 +757,7 @@ def mover2():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe2,enemy12,posye2,posym,posxm,estadoe2,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe2,enemy12,posye2,posym,posxm,estadoe2,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy12)
     posxe2=posxe2+1
     if ((posxm<=(posxe2+30))and(posxm>=(posxe2-30)))and((posym==(posye2+50))or(posym==(posye2-45))):
@@ -771,6 +780,9 @@ a mario y morir a manos de este
         if (((posye2<=440) and (posye2>=240))or((posye2>=460) and (posye2<=530))or((posye2<=230) and (posye2>=80))) and (posxe2>800):
             posxe2=0
             if(posye2>=460) and (posye2<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye2=210
             elif(posye2<=230) and (posye2>=80):
                 posye2=520
@@ -791,7 +803,7 @@ def mover3():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe3,enemy13,posye3,posym,posxm,estadoe3,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe3,enemy13,posye3,posym,posxm,estadoe3,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy13)
     posxe3=posxe3+1
     if ((posxm<=(posxe3+30))and(posxm>=(posxe3-30)))and((posym==(posye3+50))or(posym==(posye3-45))):
@@ -814,6 +826,9 @@ a mario y morir a manos de este
         if (((posye3<=440) and (posye3>=240))or((posye3>=460) and (posye3<=530))or((posye3<=230) and (posye3>=80))) and (posxe3>800):
             posxe3=0
             if(posye3>=460) and (posye3<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye3=210
             elif(posye3<=230) and (posye3>=80):
                 posye3=520
@@ -834,7 +849,7 @@ def mover4():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe4,nube,posye4,posym,posxm,estadoe4,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe4,nube,posye4,posym,posxm,estadoe4,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube)
     posxe4=posxe4-1
     if ((posxm<=(posxe4+30))and(posxm>=(posxe4-30)))and((posym==(posye4+50))or(posym==(posye4-45))):
@@ -857,6 +872,9 @@ a mario y morir a manos de este
         if (((posye4<=440) and (posye4>=240))or((posye4>=460) and (posye4<=530))or((posye4<=230) and (posye4>=80))) and (posxe4<0):
             posxe4=800
             if(posye4>=460) and (posye4<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye4=210
             elif(posye4<=230) and (posye4>=80):
                 posye4=520
@@ -877,7 +895,7 @@ def mover5():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe5,nube11,posye5,posym,posxm,estadoe5,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe5,nube11,posye5,posym,posxm,estadoe5,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube11)
     posxe5=posxe5-1
     if ((posxm<=(posxe5+30))and(posxm>=(posxe5-30)))and((posym==(posye5+50))or(posym==(posye5-45))):
@@ -900,6 +918,9 @@ a mario y morir a manos de este
         if (((posye5<=440) and (posye5>=240))or((posye5>=460) and (posye5<=530))or((posye5<=230) and (posye5>=80))) and (posxe5<0):
             posxe5=800
             if(posye5>=460) and (posye5<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye5=210
             elif(posye5<=230) and (posye5>=80):
                 posye5=520
@@ -920,7 +941,7 @@ def mover6():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe6,nube12,posye6,posym,posxm,estadoe6,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe6,nube12,posye6,posym,posxm,estadoe6,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube12)
     posxe6=posxe6+1
     if ((posxm<=(posxe6+30))and(posxm>=(posxe6-30)))and((posym==(posye6+50))or(posym==(posye6-45))):
@@ -943,6 +964,9 @@ a mario y morir a manos de este
         if (((posye6<=440) and (posye6>=240))or((posye6>=460) and (posye6<=530))or((posye6<=230) and (posye6>=80))) and (posxe6>800):
             posxe6=0
             if(posye6>=460) and (posye6<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye6=210
             elif(posye6<=230) and (posye6>=80):
                 posye6=520
@@ -963,7 +987,7 @@ def mover7():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe7,nube13,posye7,posym,posxm,estadoe7,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe7,nube13,posye7,posym,posxm,estadoe7,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube13)
     posxe7=posxe7+1
     if ((posxm<=(posxe7+30))and(posxm>=(posxe7-30)))and((posym==(posye7+50))or(posym==(posye7-45))):
@@ -987,6 +1011,9 @@ a mario y morir a manos de este
             posxe7=0
             if(posye7>=460) and (posye7<=530):
                 posye7=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye7<=230) and (posye7>=80):
                 posye7=520
         if ((posye7==420)and(((posxe7>=300)and(posxe7<=500)))):
@@ -1006,7 +1033,7 @@ def mover8():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe8,enemy15,posye8,posym,posxm,estadoe8,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe8,enemy15,posye8,posym,posxm,estadoe8,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy15)
     posxe8=posxe8-1
     if ((posxm<=(posxe8+30))and(posxm>=(posxe8-30)))and((posym==(posye8+50))or(posym==(posye8-45))):
@@ -1030,6 +1057,9 @@ a mario y morir a manos de este
             posxe8=800
             if(posye8>=460) and (posye8<=530):
                 posye8=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye8<=230) and (posye8>=80):
                 posye8=520
         if ((posye8==420)and(((posxe8>=300)and(posxe8<=500)))):
@@ -1049,7 +1079,7 @@ def mover9():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe9,enemy14,posye9,posym,posxm,estadoe9,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe9,enemy14,posye9,posym,posxm,estadoe9,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy14)
     posxe9=posxe9-1
     if ((posxm<=(posxe9+30))and(posxm>=(posxe9-30)))and((posym==(posye9+50))or(posym==(posye9-45))):
@@ -1073,6 +1103,9 @@ a mario y morir a manos de este
             posxe9=800
             if(posye9>=460) and (posye9<=530):
                 posye9=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye9<=230) and (posye9>=80):
                 posye9=520
         if ((posye9==420)and(((posxe9>=300)and(posxe9<=500)))):
@@ -1092,7 +1125,7 @@ def mover10():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe10,enemy16,posye10,posym,posxm,estadoe10,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe10,enemy16,posye10,posym,posxm,estadoe10,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy16)
     posxe10=posxe10+1
     if ((posxm<=(posxe10+30))and(posxm>=(posxe10-30)))and((posym==(posye10+50))or(posym==(posye10-45))):
@@ -1116,6 +1149,9 @@ a mario y morir a manos de este
             posxe10=0
             if(posye10>=460) and (posye10<=530):
                 posye10=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye10<=230) and (posye10>=80):
                 posye10=520
         if ((posye10==420)and(((posxe10>=300)and(posxe10<=500)))):
@@ -1135,7 +1171,7 @@ def mover11():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe11,enemy17,posye11,posym,posxm,estadoe11,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe11,enemy17,posye11,posym,posxm,estadoe11,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(enemy17)
     posxe11=posxe11+1
     if ((posxm<=(posxe11+30))and(posxm>=(posxe11-30)))and((posym==(posye11+50))or(posym==(posye11-45))):
@@ -1159,6 +1195,9 @@ a mario y morir a manos de este
             posxe11=0
             if(posye11>=460) and (posye11<=530):
                 posye11=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye11<=230) and (posye11>=80):
                 posye11=520
         if ((posye11==420)and(((posxe11>=300)and(posxe11<=500)))):
@@ -1178,7 +1217,7 @@ def mover12():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe12,nube14,posye12,posym,posxm,estadoe12,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe12,nube14,posye12,posym,posxm,estadoe12,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube14)
     posxe12=posxe12-1
     if ((posxm<=(posxe12+30))and(posxm>=(posxe12-30)))and((posym==(posye12+50))or(posym==(posye12-45))):
@@ -1202,6 +1241,9 @@ a mario y morir a manos de este
             posxe12=800
             if(posye12>=460) and (posye12<=530):
                 posye12=210
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
             elif(posye12<=230) and (posye12>=80):
                 posye12=520
         if ((posye12==420)and(((posxe12>=300)and(posxe12<=500)))):
@@ -1221,7 +1263,7 @@ def mover13():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe13,nube15,posye13,posym,posxm,estadoe13,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe13,nube15,posye13,posym,posxm,estadoe13,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube15)
     posxe13=posxe13-1
     if ((posxm<=(posxe13+30))and(posxm>=(posxe13-30)))and((posym==(posye13+50))or(posym==(posye13-45))):
@@ -1244,6 +1286,9 @@ a mario y morir a manos de este
         if (((posye13<=440) and (posye13>=240))or((posye13>=460) and (posye13<=530))or((posye13<=230) and (posye13>=80))) and (posxe13<0):
             posxe13=800
             if(posye13>=460) and (posye13<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye13=210
             elif(posye13<=230) and (posye13>=80):
                 posye13=520
@@ -1264,7 +1309,7 @@ def mover14():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe14,nube16,posye14,posym,posxm,estadoe14,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe14,nube16,posye14,posym,posxm,estadoe14,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube16)
     posxe14=posxe14+1
     if ((posxm<=(posxe14+30))and(posxm>=(posxe14-30)))and((posym==(posye14+50))or(posym==(posye14-45))):
@@ -1287,6 +1332,9 @@ a mario y morir a manos de este
         if (((posye14<=440) and (posye14>=240))or((posye14>=460) and (posye14<=530))or((posye14<=230) and (posye14>=80))) and (posxe14>800):
             posxe14=0
             if(posye14>=460) and (posye14<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye14=210
             elif(posye14<=230) and (posye14>=80):
                 posye14=520
@@ -1307,7 +1355,7 @@ def mover15():
 esta funcion realiza el movimiento de un enemigo, haciendo tambien la simulacion de mapa continuo en este y los diferentes tipos de colisiones que puede tener desde matar
 a mario y morir a manos de este
     """
-    global posxe15,nube17,posye15,posym,posxm,estadoe15,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21
+    global posxe15,nube17,posye15,posym,posxm,estadoe15,vida3,vida1,vida2,counterym,posxl,posyl,counteryl,vida31,vida11,vida21,parejas
     canvas.delete(nube17)
     posxe15=posxe15+1
     if ((posxm<=(posxe15+30))and(posxm>=(posxe15-30)))and((posym==(posye15+50))or(posym==(posye15-45))):
@@ -1330,6 +1378,9 @@ a mario y morir a manos de este
         if (((posye15<=440) and (posye15>=240))or((posye15>=460) and (posye15<=530))or((posye15<=230) and (posye15>=80))) and (posxe15>800):
             posxe15=0
             if(posye15>=460) and (posye15<=530):
+                puntaje(-100)
+                if parejas==True:
+                    puntajel(-100)
                 posye15=210
             elif(posye15<=230) and (posye15>=80):
                 posye15=520
@@ -1815,7 +1866,7 @@ def menu():
         canvas2.pack()
         def atras():
             """
-    esta funcion nos devuelve al menu desde cualquier pantalla donde se ingresan los nombres
+    esta funcion nos devuelve al menu desde cualquier desde donde se muestran 
             """
             n.withdraw()
             m.iconify()
