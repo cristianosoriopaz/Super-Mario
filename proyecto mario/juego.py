@@ -1,7 +1,6 @@
 import tkinter
 import tkinter.ttk
 import winsound
-import time
 #creacion y titulacion de la ventana
 v = tkinter.Tk()
 v.title("Super Mario Game")
@@ -424,30 +423,30 @@ en esta misma funcion tambien se determinan las caracteristicas para obtener o s
                     else:
                         lemario = canvas.create_image(posxm,posym, image=mario3)
                     estadom=0
-    elif(tecla == "'g'"):
-        if parejas==False:
-            archivo=open('unjugadorg.txt','r')
-            nombre1=archivo.readlines(1)
-            archivo.close()
-            datos=[str(nombre1[0]),"\n",str(points),"\n",str(nivel),"\n",str(estadov1),"\n",str(estadov2),"\n",str(estadov3)]
-            archivo=open('unjugadorg.txt','w')
-            archivo.writelines(datos)     
-            archivo.close()
-        if parejas==True:
-            archivo=open('dosjugadorg.txt','r')
-            nombres=archivo.readlines()
-            nombre1=nombres[0]
-            nombre2=nombres[1]
-            archivo.close()
-            datos1=[str(nombre1),"\n",str(points),"\n",str(nivel),"\n",str(estadov1),"\n",str(estadov2),"\n",str(estadov3),"\n",str(nombre2),"\n",str(pointsl),"\n",str(estadov11),"\n",str(estadov21),"\n",str(estadov31)]
-            print(datos1)
-            archivo=open('dosjugadorg.txt','w')
-            archivo.writelines(datos1)     
-            archivo.close()
-            archivo=open('dosjugadorg.txt','r')
-            print(archivo.readlines())
-            archivo.close()
-            
+        elif(tecla == "'g'"):
+            presionado[3] = True
+            if parejas==False:
+                archivo=open('unjugadorg.txt','r')
+                nombre1=archivo.readlines(1)
+                archivo.close()
+                datos=[str(nombre1[0]),"\n",str(points),"\n",str(nivel),"\n",str(estadov1),"\n",str(estadov2),"\n",str(estadov3)]
+                archivo=open('unjugadorg.txt','w')
+                archivo.writelines(datos)     
+                archivo.close()
+            if parejas==True:
+                archivo=open('dosjugadorg.txt','r')
+                nombres=archivo.readlines()
+                nombre1=nombres[0]
+                nombre2=nombres[1]
+                archivo.close()
+                datos1=[str(nombre1),"\n",str(points),"\n",str(nivel),"\n",str(estadov1),"\n",str(estadov2),"\n",str(estadov3),"\n",str(nombre2),"\n",str(pointsl),"\n",str(estadov11),"\n",str(estadov21),"\n",str(estadov31)]
+                print(datos1)
+                archivo=open('dosjugadorg.txt','w')
+                archivo.writelines(datos1)     
+                archivo.close()
+                archivo=open('dosjugadorg.txt','r')
+                print(archivo.readlines())
+                archivo.close()
     if parejas==True:
         if finall!=1:
             if(tecla == "'i'"):
@@ -586,6 +585,8 @@ esta funcion recive eventos de teclado exactamente cuando se ha dejado de presio
     elif(tecla == "'d'"):
         estadoizdem=1
         presionado[2] = False
+    elif(tecla == "'g'"):
+        presionado[3] = False
     elif(tecla == "'i'"):
         presionado[4] = False
     elif(tecla == "'j'"):
@@ -1481,7 +1482,7 @@ de que este puntaje sea u multiplo de cierto numero llamara a la funcion que da 
     score.place(x=0,y=50)
     muestran=tkinter.Label(v,font=("Arial"),text=nivel,width=10,bd=5,bg=("black"),fg=("white"))
     muestran.place(x=350,y=30)
-    if points%1000==0:
+    if points%2000==0:
         darvida()
 def puntajel(b):
     """
@@ -1490,11 +1491,11 @@ de que este puntaje sea u multiplo de cierto numero llamara a la funcion que da 
     """
     global pointsl,estadov11,estadov21,estadov31,nivel
     pointsl=pointsl+b
-    scorel=tkinter.Label(v,font=("Arial"),text=str(points),width=20,bg=("black"),fg=("white"))
+    scorel=tkinter.Label(v,font=("Arial"),text=str(pointsl),width=20,bg=("black"),fg=("white"))
     scorel.place(x=600,y=50)
-    muestran=tkinter.Label(v,font=("Arial"),text=nivel,width=10,bd=5,bg=("black"),fg=("white"))
-    muestran.place(x=350,y=30)
-    if pointsl%1000==0:
+    muestran1=tkinter.Label(v,font=("Arial"),text=nivel,width=10,bd=5,bg=("black"),fg=("white"))
+    muestran1.place(x=350,y=30)
+    if pointsl%2000==0:
         darvidal()
 def darvida():
     """
@@ -1553,7 +1554,7 @@ def quitarvida():
 funcion que interactua con los labels que representan las vidas, quitando una en tal caso de que haya muerto algun personaje, al ya no tener mas vidas que quitar se determina
 que ha perdido el juego
     """
-    global estadov3,estadov2,estadov1,vida3,vida1,vida2,lemario,canvas,estadov31,estadov21,estadov11,vida31,vida11,vida21,lemario,canvas,leluigi,final,finall,both
+    global estadov3,estadov2,estadov1,vida3,vida1,vida2,lemario,canvas,estadov31,estadov21,estadov11,vida31,vida11,vida21,lemario,leluigi,final,finall,both
     canvas.delete(lemario)
     if ((estadov1==1)and(estadov3==1)and(estadov2==1)):
         vida3.destroy()
@@ -1800,6 +1801,28 @@ def menu():
         muestran.place(x=350,y=30)
         empezar()
         archivo.close()
+    def control():
+        """
+    esta funcion despliega la pantalla para el ingreso de el nombre de dos jugadores como toplevel del juego
+        """
+        global v
+        m.withdraw()
+        n=tkinter.Toplevel(v)
+        canvas2 = tkinter.Canvas(n,width=800,height=450)
+        contro=tkinter.PhotoImage(file='controles.png')
+        canvas2.create_image(400,225, image=contro)
+        canvas2.focus_set()
+        canvas2.pack()
+        def atras():
+            """
+    esta funcion nos devuelve al menu desde cualquier pantalla donde se ingresan los nombres
+            """
+            n.withdraw()
+            m.iconify()
+        atras=tkinter.Button(n,image=goback,command=atras,width=20,height=(20),bg=("black"),fg=("white"))
+        atras.place(x=0,y=0)
+        n.resizable(0,0)
+        n.mainloop()
     unjugador=tkinter.Button(m,text="Un Jugador",font=("Agency FB",30),command=nombres1,width=15,bg=("black"),fg=("white"))
     unjugador.place(x=0,y=315)
     COOP=tkinter.Button(m,text="Dos Jugadores",font=("Agency FB",30),command=nombres2,width=15,height=(1),bg=("black"),fg=("white"))
@@ -1808,6 +1831,8 @@ def menu():
     cargar.place(x=0,y=405)
     cargar2=tkinter.Button(m,text="Cargar Partida",font=("Agency FB",30),command=juego3,width=15,bg=("black"),fg=("white"))
     cargar2.place(x=280,y=405)
+    controles=tkinter.Button(m,text="Controles",font=("Agency FB",30),command=control,width=15,height=(1),bg=("black"),fg=("white"))
+    controles.place(x=565,y=315)
     salir=tkinter.Button(m,text="Salir",font=("Agency FB",30),command=v.destroy,width=15,height=(1),bg=("black"),fg=("white"))
     salir.place(x=565,y=405)
     m.resizable(0,0)
